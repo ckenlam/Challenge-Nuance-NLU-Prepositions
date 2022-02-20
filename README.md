@@ -8,6 +8,8 @@ The full text of "The Hound of the Baskervilles", by Sir Arthur Conan Doyle, is 
 
 The full text of "The Adventures of Sherlock Holmes", by Sir Arthur Conan Doyle, can be found in my github repo at https://raw.githubusercontent.com/ckenlam/Language-Model/main/hound-train.txt .
 
+This fine-tuned 
+
 # High-Level Methodology 
 1. Load a pre-trained RoBERTa model with Huggingface for masked language modeling.
 2. Use "The Adventures of Sherlock Holmes" full text as training data to fine-tune the RoBERTa model.
@@ -16,3 +18,19 @@ The full text of "The Adventures of Sherlock Holmes", by Sir Arthur Conan Doyle,
 5. After fine-tuning, run each line of "The Hound of the Baskervilles" through the model and generate a preposition prediction for each masked token.
 6. Count the number of correct predictions for each line of "The Hound of the Baskervilles"
 7. Save the results as [nlu_challenge_results.csv](https://github.com/ckenlam/Challenge-Nuance-NLU-Prepositions/blob/main/nlu_challenge_results.csv).
+
+# How to load the model
+The model can be loaded through Huggingface:
+```python
+from transformers import TFAutoModelForMaskedLM
+
+#load the model
+model = TFAutoModelForMaskedLM.from_pretrained("ckenlam/nlu_sherlock_model")
+mask_filler = pipeline("fill-mask", model=model, tokenizer=tokenizer, top_k=1)
+
+#test the model
+test_phrase = 'the hound <mask> the baskervilles'
+pred = mask_filler(test_phrase)
+print(f"Input sentence: {test_phrase}")
+print(f"Predicted sentence: {pred[0]['sequence']}")
+```
