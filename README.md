@@ -8,7 +8,7 @@ The full text of "The Hound of the Baskervilles", by Sir Arthur Conan Doyle, is 
 
 The full text of "The Adventures of Sherlock Holmes", by Sir Arthur Conan Doyle, can be found in my github repo at https://raw.githubusercontent.com/ckenlam/Language-Model/main/hound-train.txt .
 
-This fine-tuned 
+This fine-tuned model has an accuracy of 64%; its perplexity also slightly improved from 4.98 to 4.95.
 
 # High-Level Methodology 
 1. Load a pre-trained RoBERTa model with Huggingface for masked language modeling.
@@ -25,7 +25,7 @@ The model can be loaded through Huggingface:
 from transformers import TFAutoModelForMaskedLM
 
 #load the model
-model = TFAutoModelForMaskedLM.from_pretrained("ckenlam/nlu_sherlock_model")
+model = TFAutoModelForMaskedLM.from_pretrained("ckenlam/nlu_sherlock_model_20220220")
 mask_filler = pipeline("fill-mask", model=model, tokenizer=tokenizer, top_k=1)
 
 #test the model
