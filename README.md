@@ -34,3 +34,4 @@ pred = mask_filler(test_phrase)
 print(f"Input sentence: {test_phrase}")
 print(f"Predicted sentence: {pred[0]['sequence']}")
 ```
+>the hound of the baskervilles'
