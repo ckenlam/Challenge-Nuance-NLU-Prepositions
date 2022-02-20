@@ -35,4 +35,5 @@ print(f"Input sentence: {test_phrase}")
 print(f"Predicted sentence: {pred[0]['sequence']}")
 ```
 > 'Input sentence: the hound <mask> the baskervilles'
+  
 > 'Predicted sentence: the hound of the baskervilles'
