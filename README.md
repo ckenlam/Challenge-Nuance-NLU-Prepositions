@@ -14,7 +14,7 @@ This fine-tuned model has an accuracy of 64%; its perplexity also slightly impro
 1. Load a pre-trained RoBERTa model with Huggingface for masked language modeling.
 2. Use "The Adventures of Sherlock Holmes" full text as training data to fine-tune the RoBERTa model.
 3. Mask all the prepositions in "The Adventures of Sherlock Holmes" and "The Hound of the Baskervilles".
-4. Use the data collator DataCollatorForLanguageModeling to randomly mask 15% of the tokens in each batch of "The Adventures of Sherlock Holmes" texts during the fine-tuning process. The goal is to provide sufficient domain adaptation when running the model on "The Hound of the Baskervilles" after fine-tuning.
+4. Use the data collator DataCollatorForLanguageModeling to randomly mask 15% of the tokens in each batch of "The Adventures of Sherlock Holmes" texts during the fine-tuning process. The goal is to provide sufficient domain adaptation during the fine-tuning.
 5. After fine-tuning, run each line of "The Hound of the Baskervilles" through the model and generate a preposition prediction for each masked token.
 6. Count the number of correct predictions for each line of "The Hound of the Baskervilles"
 7. Save the results as [nlu_challenge_results.csv](https://github.com/ckenlam/Challenge-Nuance-NLU-Prepositions/blob/main/nlu_challenge_results.csv).
